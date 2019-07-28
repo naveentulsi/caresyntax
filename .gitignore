@@ -22,7 +22,7 @@ target/
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
-/dist/
+/ssa-ng-app/dist/
 /nbdist/
 /.nb-gradle/
 build/
@@ -38,7 +38,7 @@ build/
 /out-tsc
 
 # dependencies
-/node_modules
+/ssa-ng-app/node_modules
 
 # profiling files
 chrome-profiler-events.json
