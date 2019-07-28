@@ -1,0 +1,71 @@
+<section class="row">
+  <div class="col">
+    <div class="card text-center" style="min-width: 35rem;">
+      <div class="card-header">
+        Schedule Study
+      </div>
+      <div class="card-body">
+        <form [formGroup]="studyScheduleForm" (ngSubmit)="schedule()">
+          <div class="row">
+            <div class="col-5 form-group">
+              <label for="patient">Patient<span style="color: red">*</span></label>
+              <input type="text" formControlName="patient" class="form-control" id="patient"
+                aria-describedby="patientHelp" placeholder="Full name">
+              <small id="patientHelp" class="form-text text-muted">Please enter
+                patient's name.
+              </small>
+            </div>
+            <div class="col-sm-2"></div>
+            <div class="col-5 form-group">
+              <label for="doctor">Doctor<span style="color: red">*</span></label>
+              <input type="text" formControlName="doctor" class="form-control" id="doctor" aria-describedby="doctorHelp"
+                placeholder="Full name">
+              <small id="doctorHelp" class="form-text text-muted">Please enter doctor's name.
+              </small>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-5 form-group">
+              <label for="plannedStartDate">Planned Start Date<span style="color: red">*</span></label>
+              <input class="form-control" [min]="minDate" formControlName="plannedStartDate" id="plannedStartDate"
+                [owlDateTimeTrigger]="dt7" [owlDateTime]="dt7">
+              <owl-date-time [pickerMode]="'dialog'" [pickerType]="'calendar'" #dt7></owl-date-time>
+            </div>
+            <div class="col-sm-2"></div>
+            <div class="col-5 form-group">
+              <label for="plannedEndDate">Planned End Date</label>
+              <input class="form-control" [min]="minDate" id="plannedEndDate" formControlName="plannedEndDate"
+                [owlDateTimeTrigger]="dt8" [owlDateTime]="dt8">
+              <owl-date-time [pickerMode]="'dialog'" [pickerType]="'calendar'" #dt8></owl-date-time>
+            </div>
+          </div>
+          <div class="row">
+            <div class="form-group col-5">
+              <label for="room">Room</label>
+              <input type="text" formControlName="room" class="form-control" id="room" placeholder="Enter Room #">
+            </div>
+            <div class="col-sm-2"></div>
+            <div class="form-group col-5">
+              <label for="status">Status<span style="color: red">*</span></label>
+              <select formControlName="status" class="custom-select" id="status" aria-describedby="statusHelp">
+                <option value="Planned">Planned</option>
+                <option value="In-Progress">In-Progress</option>
+                <option value="Finished">Finished</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="description">Description<span style="color: red">*</span></label>
+            <textarea formControlName="description" class="form-control" id="description" rows="3"></textarea>
+          </div>
+          <button type="submit" id="schedule" [disabled]="studyScheduleForm.invalid" aria-describedby="scheduleHelp"
+            class="btn btn-primary">Schedule</button>
+          <small id="scheduleHelp" class="form-text text-muted"><span>Please fill all mandatory(</span><span
+              style="color: red">*</span><span>) fields to enable the button.</span>
+          </small>
+        </form>
+      </div>
+    </div>
+  </div>
+  <app-dyanmic-listing class="col" *ngIf="dynamicList" [dynamicList]="dynamicResultList"></app-dyanmic-listing>
+</section>
