@@ -1,0 +1,25 @@
+<div class="container-fluid">
+  <header>
+    <h3 class="row justify-content-center">
+      Study Scheduling Application
+    </h3>
+  </header>
+  <nav class="nav justify-content-center">
+    <li class="nav-item">
+      <a class="nav-link" href="#">Schedule</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Room</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Doctor</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/addPatient']" routerLinkActive="active">
+        Add Patient</a>
+    </li>
+  </nav>
+  <div class="row justify-content-center">
+    <router-outlet> </router-outlet>
+  </div>
+</div>

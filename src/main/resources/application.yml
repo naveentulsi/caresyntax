@@ -1,0 +1,32 @@
+spring:
+  datasource:
+    username: ${husername}
+    #username: hvaxizhu
+    password: ${hpassword}
+    #password: ZvWT0bzcgI_g245M-t2zX2JXZyka2_Nu
+    url: ${hdbUrl}
+    #url: jdbc:postgresql://raja.db.elephantsql.com:5432/hvaxizhu
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      schema: caresyntax
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+server:
+  port: 8080
+  servlet:
+    context-path: /ssa
+logging:
+  file: logs/ssa-app.log
+  pattern:
+    console: "%d %-5level %logger : %msg%n"
+    file: "%d %-5level [%thread] %logger : %msg%n"
+  level:
+    org.springframework.web: ERROR
+    com.caresyntax: DEBUG
+    org.hibernate: ERROR
