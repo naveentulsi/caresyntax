@@ -11,5 +11,5 @@ public interface IProcedureService<T> {
 
     List<T> getAllProcedure();
 
-    T validateAndSetProcedureData(ProcedureDto procedureDto) throws SsaInvalidDataException;
+    Procedure validateAndSetProcedureData(ProcedureDto procedureDto) throws SsaInvalidDataException;
 }
