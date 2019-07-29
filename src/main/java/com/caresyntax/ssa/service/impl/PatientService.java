@@ -73,5 +73,10 @@ public class PatientService implements IPatientService<Patient> {
         return patient;
     }
 
+    @Override
+    public Optional<Patient> findPatient(Long Id){
+        return this.patientRepository.findById(Id);
+    }
+
 }
 
