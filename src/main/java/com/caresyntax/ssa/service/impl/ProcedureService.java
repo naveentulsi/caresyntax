@@ -15,6 +15,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -53,9 +54,22 @@ public class ProcedureService implements IProcedureService<Procedure> {
      * @return saved entity
      */
     @Override
+    @Transactional
     public Procedure saveProcedure(Procedure procedure) {
+        log.info("START ProcedureService saveProcedure");
         final Procedure sProcedure = this.procedureRepository.save(procedure);
         return sProcedure;
+    }
+
+    /**
+     * find procedure by procedure Id
+     * @param Id - procedure
+     * @return procedure instance wrapped in an optional
+     */
+    @Override
+    public Optional<Procedure> findById(Integer Id) {
+        log.info("START ProcedureService findById");
+        return this.procedureRepository.findById(Id);
     }
 
     /**
