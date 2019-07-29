@@ -3,7 +3,6 @@ package com.caresyntax.ssa.rest;
 import com.caresyntax.ssa.dto.PatientDto;
 import com.caresyntax.ssa.dto.SsaSimpleResponse;
 import com.caresyntax.ssa.exception.SsaInvalidDataException;
-import com.caresyntax.ssa.model.Gender;
 import com.caresyntax.ssa.model.Patient;
 import com.caresyntax.ssa.service.IPatientService;
 import com.caresyntax.ssa.utility.IConstants;
@@ -35,23 +34,24 @@ public class PatientRestController {
         log.info("START PatientRestController getAllPatients");
 
         Optional optionalPatientList;
-        SsaSimpleResponse getPatientsResponse = new SsaSimpleResponse();
-        getPatientsResponse.setMessage(IConstants.NO_PATIENTS);
-        getPatientsResponse.setData(Collections.EMPTY_LIST);
+        SsaSimpleResponse patientListSimpleResponse = new SsaSimpleResponse();
+        patientListSimpleResponse.setMessage(IConstants.NO_PATIENT_FETCHED);
+        patientListSimpleResponse.setData(Collections.EMPTY_LIST);
 
         try {
             optionalPatientList = this.patientService.getAllPatients();
 
             if (optionalPatientList.isPresent()) {
                 List<Patient> patientList = (List<Patient>) optionalPatientList.get();
-                getPatientsResponse.setData(patientList);
+                patientListSimpleResponse.setData(patientList);
+                patientListSimpleResponse.setMessage(IConstants.PATIENT_FETCHED);
             }
         } catch (Exception ex) {
             log.warn("Unable to get patient data");
         }
 
         log.info("END PatientRestController getAllPatients");
-        return ResponseEntity.ok(getPatientsResponse);
+        return ResponseEntity.ok(patientListSimpleResponse);
     }
 
     @PostMapping
