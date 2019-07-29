@@ -12,4 +12,6 @@ public interface IPatientService<T> {
     T addPatient(T patient);
 
     Patient createPatientModel(PatientDto patientData);
+
+    Optional<Patient> findPatient(Long Id);
 }
