@@ -23,65 +23,6 @@ Testing
 
 Angular documentation
 App is located as a module in parent spring boot project
-  caresynatx
-    |--src
-    |   |--main
-    |   |    |--java
-    |   |   |    |--com
-    |   |   |        |--caresyntax
-    |   |   |               |--ssa/
-    |   |   |                  |--config/
-    |   |   |                  |     |-- SsaApplicationConfig.java
-    |   |   |                  |-- dto/
-    |   |   |                  |    |--PatientDataResponseDto.java
-    |   |   |                  |    |--PatientDto.java
-    |   |   |                  |    |--SsaSimpleResponse.java
-    |   |   |                  |-- exception/
-    |   |   |                  |      |-- SsaExceptionAdvice.java
-    |   |   |                  |      |-- SsaExceptionResponse.java
-    |   |   |                  |      |-- SsaInvalidDataException.java
-    |   |   |                  |-- model/
-    |   |   |                  |     |-- Doctor.java
-    |   |   |                  |     |-- Gender.java
-    |   |   |                  |     |-- Patient.java
-    |   |   |                 |     |-- Procedure.jav
-    |   |   |                  |     |-- ProcedureStatus.java
-    |   |   |                  |     |-- Room.java
-    |   |   |                  |-- repository/
-    |   |   |                  |       |-- DoctorRepository.java
-    |   |   |                  |       |-- PatientRepository.java
-    |   |   |                  |       |-- ProcedureRepository.java
-    |   |   |                  |       |-- RoomRepository.java
-    |   |   |                  |-- rest/
-    |   |   |                  |    |-- DoctorRestController.java
-    |   |   |                  |    |-- PatientRestController.java
-    |   |   |                  |    |-- ProcedureRestController.java
-    |   |   |                  |    |-- RoomRestController.java
-    |   |   |                  |-- service/
-    |   |   |                  |      |-- impl
-    |   |   |                  |      |    |-- DoctorService.java
-    |   |   |                  |      |    |-- PatientService.java
-    |   |   |                  |      |    |-- ProcedureService.java
-    |   |   |                  |      |    |-- RoomService.java
-    |   |   |                  |      |-- IDoctorService.java
-    |   |   |                  |      |-- IPatientService.java
-    |   |   |                  |      |-- IProcedureService.java
-    |   |   |                  |      |-- IRoomService.java
-    |   |   |                  |-- utility/
-    |   |   |                  |     |--IConstants.java
-    |   |   |                  |-- SsaApplication.java
-    |   |   |--resources/
-    |   |         |--application.yml
-    |   |
-    |   |--test/
-    |       |--java/
-    |           |--com/
-    |               |--caresyntax/
-    |                     |--ssa/
-    |                     |    |--rest/
-    |                     |    |     |--PatientRestControllerTest.java
-    |                     |    |-- SsaApplicationTests.java      
-    
     
 
 ## Installation 
