@@ -15,4 +15,8 @@ export class ToastService {
   showError(errorMessage: string) {
     this.toastr.error(errorMessage, 'Error');
   }
+
+  showInfo(info: string, header: string) {
+    this.toastr.info(info, header);
+  }
 }
