@@ -48,9 +48,9 @@
             <div class="form-group col-5">
               <label for="status">Status<span style="color: red">*</span></label>
               <select formControlName="status" class="custom-select" id="status" aria-describedby="statusHelp">
-                <option value="Planned">Planned</option>
-                <option value="In-Progress">In-Progress</option>
-                <option value="Finished">Finished</option>
+                <option value="PLANNED">Planned</option>
+                <option value="IN_PROGRESS">In-Progress</option>
+                <option value="FINISHED">Finished</option>
               </select>
             </div>
           </div>
@@ -67,5 +67,4 @@
       </div>
     </div>
   </div>
-  <app-dyanmic-listing class="col" *ngIf="dynamicList" [dynamicList]="dynamicResultList"></app-dyanmic-listing>
 </section>
