@@ -18,9 +18,17 @@ import { RoomService } from './shared/services/room/room.service';
 import { DoctorService } from './shared/services/doctor/doctor.service';
 import { RoomListingComponent } from './routes/room-listing/room-listing.component';
 import { DoctorListingComponent } from './routes/doctor-listing/doctor-listing.component';
+import { UpdateStudyComponent } from './routes/update-study/update-study.component';
+import { PatientListingComponent } from './routes/patient-listing/patient-listing.component';
 
 export const MY_MOMENT_FORMATS = {
-  datePickerInput: 'l',
+  parseInput: 'LL LT',
+  fullPickerInput: 'LL LT',
+  datePickerInput: 'LL',
+  timePickerInput: 'LT',
+  monthYearLabel: 'MMM YYYY',
+  dateA11yLabel: 'LL',
+  monthYearA11yLabel: 'MMMM YYYY',
 };
 
 @NgModule({
@@ -30,7 +38,9 @@ export const MY_MOMENT_FORMATS = {
     StudySchedulerComponent,
     DyanmicListingComponent,
     RoomListingComponent,
-    DoctorListingComponent
+    DoctorListingComponent,
+    UpdateStudyComponent,
+    PatientListingComponent
   ],
   imports: [
     BrowserModule,
