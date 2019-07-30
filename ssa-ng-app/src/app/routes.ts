@@ -4,23 +4,34 @@ import { AppComponent } from './app.component';
 import { StudySchedulerComponent } from './routes/study-scheduler/study-scheduler.component';
 import { RoomListingComponent } from './routes/room-listing/room-listing.component';
 import { DoctorListingComponent } from './routes/doctor-listing/doctor-listing.component';
+import { UpdateStudyComponent } from './routes/update-study/update-study.component';
+import { PatientListingComponent } from './routes/patient-listing/patient-listing.component';
 
 export const route: Route[] = [
   {
-    path: 'addPatient',
+    path: 'ap',
     component: AddPatientComponent
   },
   {
-    path: 'schedule',
+    path: 'sc',
     component: StudySchedulerComponent
   },
   {
-    path: 'rl',
+    path: 'rml',
     component: RoomListingComponent
   },
   {
-    path: 'dc',
+    path: 'dcl',
     component: DoctorListingComponent
+  },
+  {
+    path: 'ups',
+    component: UpdateStudyComponent
+
+  },
+  {
+    path: 'ptl',
+    component: PatientListingComponent
   },
   {
     path: '*',
