@@ -8,11 +8,14 @@ import { UtilService } from '../util/util.service';
 })
 export class DoctorService {
 
+  endpoint: string = UtilService.getServerUrl().concat('doc');
   constructor(private httpCliet: HttpClient) { }
 
   public getAllDoctors() {
-    const serverUrl = UtilService.getServerUrl();
-    const endpoint = serverUrl.concat('doctor');
-    return this.httpCliet.get(endpoint);
+    try {
+      return this.httpCliet.get(this.endpoint);
+    } catch (e) {
+      return;
+    }
   }
 }
