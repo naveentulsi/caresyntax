@@ -39,7 +39,7 @@ public class SsaExceptionAdvice {
      * @return
      */
     private ResponseEntity error() {
-        return ResponseEntity.ok(new SsaExceptionResponse("Server Exception", "Server is down, try again in some time."));
+        return ResponseEntity.ok(new SsaExceptionResponse("Server Exception", "Server is down, try again in some time.", true));
     }
 
     /**
@@ -58,7 +58,7 @@ public class SsaExceptionAdvice {
             message = ssaInvalidDataException.getMessage();
         }
 
-        return ResponseEntity.ok(new SsaExceptionResponse(reason, message));
+        return ResponseEntity.ok(new SsaExceptionResponse(reason, message, true));
     }
 
     /**
