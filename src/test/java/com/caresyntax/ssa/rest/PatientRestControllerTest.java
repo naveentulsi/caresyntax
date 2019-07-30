@@ -81,7 +81,7 @@ public class PatientRestControllerTest {
         final SsaSimpleResponse ssaSimpleResponse = (SsaSimpleResponse) result.getBody();
 
         Assert.assertNotNull(ssaSimpleResponse.getMessage().equals(IConstants.PATIENT_ADDED));
-        Assert.assertSame(null, ssaSimpleResponse.getData());
+        Assert.assertNotNull(ssaSimpleResponse.getData());
     }
 
     @Test
