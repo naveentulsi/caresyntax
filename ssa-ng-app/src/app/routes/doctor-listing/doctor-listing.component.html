@@ -1,14 +1,14 @@
-<div class="card border-info text-center ">
+<div class="card border-info text-center " *ngIf="doctorList" style="min-width: 25rem">
   <div class="card-header">
     Doctor List
   </div>
   <div class="card-body">
-    <ul class="list-group">
-      <li class="list-group-item">Room 1</li>
-      <li class="list-group-item">Room 2</li>
-      <li class="list-group-item">Room 3</li>
-      <li class="list-group-item">Porta ac consectetur ac</li>
-      <li class="list-group-item">Vestibulum at eros</li>
+    <ul class="list-group" *ngFor="let doctor of doctorList">
+      <li class="list-group-item">
+        <section style="float: left"><span style="color:darkgray">Doctor name: </span> {{doctor.name}}</section>
+        <section style="float: right"><span style="color:darkgray">Id:</span>{{doctor.id}}</section>
+      </li>
+      <!-- <li class="list-group-item"><span style="color:darkgray">Doctor name: </span>  {{doctor.name}}<span style="color:darkgray"> Id:</span>{{doctor.id}}</li> -->
     </ul>
   </div>
 </div>
