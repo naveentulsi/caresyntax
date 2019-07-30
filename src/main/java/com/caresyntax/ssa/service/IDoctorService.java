@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface IDoctorService<T> {
     List<T> getAllDoctors();
 
-    Optional<Doctor> getDoctorById(Integer Id);
+    Optional<Doctor> findDoctorById(Integer Id);
 
     @Transactional
     Doctor saveDoctor(Doctor doctor);
