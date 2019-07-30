@@ -1,0 +1,45 @@
+<div class="card border-info text-center" *ngIf="procedureList">
+  <div class="card-header">
+    Schedule List
+  </div>
+  <div class="card-body">
+    <ul class="list-group" *ngFor="let procedure of procedureList">
+      <li class="list-group-item">
+        <div class="container" style="font-size: small">
+          <div class="row">
+            <div class="col-sm">
+              <span style="color: darkgray"> Patient Name</span> : {{procedure.patient.name}}
+            </div>
+            <div class="col-sm">
+              <span style="color: darkgray"> Doctor Name</span> : {{procedure.doctor.name}}
+            </div>
+          </div>
+          <legend></legend>
+          <div class="row">
+            <div class="col-sm" style="text-overflow: ellipsis">
+              <span style="color: darkgray"> Description</span>: {{procedure.description}}
+            </div>
+            <div class="col-sm">
+              <span style="color: darkgray"> Start Date</span>: {{procedure.plannedStartTime}}
+            </div>
+          </div>
+          <legend></legend>
+          <div class="row">
+            <div class="col-md">
+              <span style="color: darkgray"> End Date</span>: {{procedure.plannedEndTime}}
+            </div>
+            <div class="col-md">
+              <span style="color: darkgray"> Status </span> 
+              <select id="status" [ngModel]="procedure.status" (ngModelChange)="updateStatus($event, procedure.id)">
+                <option value="PLANNED">Planned</option>
+                <option value="IN_PROGRESS">In-Progress</option>
+                <option value="FINISHED">Finished</option>
+              </select>
+            </div>
+          </div>
+          <button type="button" id="addPatient" class="btn btn-outline-primary btn-sm" (click)="update(procedure.status, procedure.id)" >Update</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
