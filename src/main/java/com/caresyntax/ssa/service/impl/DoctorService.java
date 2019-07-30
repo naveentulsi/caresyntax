@@ -35,9 +35,19 @@ public class DoctorService implements IDoctorService<Doctor> {
      * @return doctor wrapped in a optional
      */
     @Override
-    public Optional<Doctor> getDoctorById(Integer Id) {
-        log.info("START DoctorService getDoctorById");
-        return this.doctorRepository.findById(Id);
+    public Optional<Doctor> findDoctorById(Integer Id) {
+        log.info("START DoctorService findDoctorById");
+
+        try {
+            return this.doctorRepository.findById(Id);
+        } catch (Exception ex) {
+            log.warn("Unable to fetch doctors");
+
+            if (log.isErrorEnabled()) {
+                log.error(ex);
+            }
+        }
+        return Optional.empty();
     }
 
     /**
@@ -50,6 +60,15 @@ public class DoctorService implements IDoctorService<Doctor> {
     @Override
     public Doctor saveDoctor(Doctor doctor) {
         log.info("START DoctorService saveDoctor");
-        return this.doctorRepository.save(doctor);
+        try {
+            return this.doctorRepository.save(doctor);
+        } catch (Exception ex) {
+            log.warn("Unable to save doctor");
+
+            if (log.isErrorEnabled()) {
+                log.error(ex);
+            }
+        }
+        return null;
     }
 }
