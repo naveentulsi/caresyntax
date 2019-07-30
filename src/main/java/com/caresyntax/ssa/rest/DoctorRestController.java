@@ -30,7 +30,7 @@ public class DoctorRestController {
     public SsaSimpleResponse getAllDoctor() {
         log.info("START DoctorRestController getAllDoctor");
         SsaSimpleResponse ssaSimpleResponse = new SsaSimpleResponse();
-        ssaSimpleResponse.setMessage(IConstants.NO_DOCTOR_FETCHED);
+        ssaSimpleResponse.setMessage(IConstants.DOCTOR_NOT_FETCHED);
 
         final List<Doctor> doctorList = this.doctorService.getAllDoctors();
         if (doctorList != null && doctorList.size() > 0) {
@@ -47,7 +47,7 @@ public class DoctorRestController {
     public ResponseEntity<SsaSimpleResponse> addDoctor(@RequestBody Doctor doctor) {
         log.info("START DoctorRestController addDoctor");
         SsaSimpleResponse ssaSimpleResponse = new SsaSimpleResponse();
-        ssaSimpleResponse.setMessage("Unable to save doctor now.");
+        ssaSimpleResponse.setMessage(IConstants.DOCTOR_NOT_SAVED);
 
         final Doctor sDoctor = this.doctorService.saveDoctor(doctor);
         if (sDoctor.getId() != null) {
