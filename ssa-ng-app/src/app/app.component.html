@@ -6,17 +6,24 @@
   </header>
   <nav class="nav justify-content-center">
     <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/schedule']" routerLinkActive="">
+      <a class="nav-link" [routerLink]="['/sc']" routerLinkActive="">
         Schedule</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/rl']">Rooms</a>
+        <a class="nav-link" [routerLink]="['/ups']" routerLinkActive="">
+          Update Schedule</a>
+      </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/rml']">Rooms</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/dc']">Doctors</a>
+      <a class="nav-link" [routerLink]="['/dcl']">Doctors</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" [routerLink]="['/addPatient']" routerLinkActive="active">
+        <a class="nav-link" [routerLink]="['/ptl']">Patients</a>
+      </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/ap']" routerLinkActive="active">
         Add Patient</a>
     </li>
   </nav>
