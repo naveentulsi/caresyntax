@@ -1,0 +1,13 @@
+<div class="card border-info text-center " *ngIf="patientList" style="min-width: 25rem">
+  <div class="card-header">
+    Patient List
+  </div>
+  <div class="card-body">
+    <ul class="list-group" *ngFor="let patient of patientList">
+      <li class="list-group-item">
+        <section style="float: left"><span style="color:darkgray">Patient name: </span> {{patient.name}}</section>
+        <section style="float: right"><span style="color:darkgray">Id:</span>{{patient.id}}</section>
+      </li>
+    </ul>
+  </div>
+</div>
