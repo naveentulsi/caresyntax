@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Patient } from '../../shared/intefaces/patient';
+import { Patient } from '../../shared/interfaces/patient/patient';
 import { PatientService } from '../../shared/services/patient/patient.service';
 import { ToastService } from '../../shared/services/toast/toast.service';
 
@@ -13,7 +13,8 @@ import { ToastService } from '../../shared/services/toast/toast.service';
 export class AddPatientComponent implements OnInit {
   patientForm: FormGroup;
   nameError: Boolean;
-  response: string;
+  responseMessage: string;
+  ERROR_MESSAGE = 'Unable to add patients now';
 
   constructor(private formBuilder: FormBuilder, private patientService: PatientService, private toastService: ToastService) {
     this.nameError = false;
@@ -39,20 +40,35 @@ export class AddPatientComponent implements OnInit {
     this.patientService.addPatient(patientDateJson).subscribe(
       (res: any) => {
         try {
-          this.response = res.message;
-          this.toastService.showsSuccess(this.response);
+          // get response message
+          if ('message' in res) {
+            this.responseMessage = res.message;
+            if ('error' in res) {
+              this.toastService.showError(this.responseMessage);
+            } else {
+              this.toastService.showsSuccess(this.responseMessage);
+            }
+          }
+          this.resetForm();
         } catch (err) {
+          this.toastService.showError(this.ERROR_MESSAGE);
+          this.resetForm();
           console.log(err);
         }
       },
       (err) => {
         console.log(err);
-        this.toastService.showError('Unable to add patients now.');
+        this.resetForm();
+        this.toastService.showError(this.ERROR_MESSAGE);
       },
       () => {
-
+        this.resetForm();
       });
 
+  }
+
+  resetForm() {
+    this.patientForm.reset();
   }
 
 }
