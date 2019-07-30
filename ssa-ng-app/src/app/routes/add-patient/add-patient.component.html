@@ -7,7 +7,7 @@
       <form [formGroup]="patientForm" (ngSubmit)="addPatient()">
         <div class="form-group">
           <label for="name">Name<span style="color: red">*</span></label>
-          <input formControlName="name" (change)="nameValidation()" type="text" class="form-control" id="name"
+          <input formControlName="name" type="text" class="form-control" id="name"
             aria-describedby="nameHelp" placeholder="Enter full name">
           <small id="nameHelp" class="form-text text-muted">Your details will be confidential</small>
         </div>
@@ -36,6 +36,8 @@
         </div>
         <button type="submit" id="addPatient" [disabled]="patientForm.invalid" class="btn btn-primary"
           aria-describedby="addPatientHelp">Add Patient</button>
+        <div></div>
+        <a (click)="resetForm()" style="cursor: pointer;" id="reset">Reset</a>
         <small id="addPatientHelp" class="form-text text-muted"><span>Please fill all mandatory(</span><span
             style="color: red">*</span><span>) fields to enable the button.</span></small>
       </form>
