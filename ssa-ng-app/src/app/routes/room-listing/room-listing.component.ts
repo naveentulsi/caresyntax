@@ -10,29 +10,31 @@ import { ToastService } from 'src/app/shared/services/toast/toast.service';
 export class RoomListingComponent implements OnInit {
 
   roomList: any;
+  responseMessage: any;
   constructor(private roomService: RoomService, private toastService: ToastService) { }
 
   ngOnInit() {
-    const rooms$ = this.roomService.getAllRooms();
-    rooms$.subscribe((res: any) => {
+    const room$ = this.roomService.getAllRooms();
+    room$.subscribe((res: any) => {
       try {
-        this.roomList = res.message;
+        // check data obect in response
+        if ('data' in res) {
+          this.roomList = res.data;
+        }
+        // get response message
+        if ('message' in res) {
+          this.responseMessage = res.message;
+        }
+        // check errro obect in response
+        if ('error' in res) {
+          this.toastService.showError(this.responseMessage);
+        }
       } catch (err) {
-        this.showError(err);
+        this.toastService.showError('Unable to fetch rooms.');
       }
     }, (err) => {
-      this.showError(err);
+      this.toastService.showError('Unable to fetch rooms.');
     }, () => {
     });
   }
-
-  /**
-   * Shoots error toast message
-   * @param err error object to logged
-   */
-  private showError(err: any) {
-    this.toastService.showError('Not able to fetch rooms.');
-    console.log(err);
-  }
-
 }
