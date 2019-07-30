@@ -1,14 +1,13 @@
-<div class="card border-info text-center ">
+<div class="card border-info text-center " *ngIf="roomList" style="min-width: 25rem">
   <div class="card-header">
     Room List
   </div>
   <div class="card-body">
-    <ul class="list-group">
-      <li class="list-group-item">Room 1</li>
-      <li class="list-group-item">Room 2</li>
-      <li class="list-group-item">Room 3</li>
-      <li class="list-group-item">Porta ac consectetur ac</li>
-      <li class="list-group-item">Vestibulum at eros</li>
+    <ul class="list-group" *ngFor="let room of roomList">
+      <li class="list-group-item">
+        <section style="float: left"><span style="color:darkgray">Room number: </span> {{room.name}}</section>
+        <section style="float: right"><span style="color:darkgray">#:</span>{{room.room_number}}</section>
+      </li>
     </ul>
   </div>
 </div>
