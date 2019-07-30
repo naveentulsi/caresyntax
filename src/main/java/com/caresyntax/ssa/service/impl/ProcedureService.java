@@ -57,19 +57,41 @@ public class ProcedureService implements IProcedureService<Procedure> {
     @Transactional
     public Procedure saveProcedure(Procedure procedure) {
         log.info("START ProcedureService saveProcedure");
-        final Procedure sProcedure = this.procedureRepository.save(procedure);
-        return sProcedure;
+        try {
+            final Procedure sProcedure = this.procedureRepository.save(procedure);
+            return sProcedure;
+        } catch (Exception ex) {
+            log.warn("Exception occurred while saving procedure.");
+
+            if (log.isErrorEnabled()) {
+                log.error(ex);
+            }
+        }
+        return null;
     }
 
     /**
      * find procedure by procedure Id
+     *
      * @param Id - procedure
      * @return procedure instance wrapped in an optional
      */
     @Override
     public Optional<Procedure> findById(Integer Id) {
         log.info("START ProcedureService findById");
-        return this.procedureRepository.findById(Id);
+
+        try {
+            return this.procedureRepository.findById(Id);
+
+        } catch (Exception ex) {
+            log.warn("Unable to fetch procedure.");
+
+            if (log.isErrorEnabled()) {
+                log.error(ex);
+            }
+        }
+        log.info("END ProcedureService findById");
+        return Optional.empty();
     }
 
     /**
@@ -80,11 +102,18 @@ public class ProcedureService implements IProcedureService<Procedure> {
     @Override
     public List<Procedure> getAllProcedure() {
         log.info("START ProcedureService getAllProcedure");
-        final Iterable<Procedure> all = this.procedureRepository.findAll();
         List<Procedure> procedureList = new ArrayList<>();
-        all.forEach(procedure -> {
-            procedureList.add(procedure);
-        });
+        try {
+            final Iterable<Procedure> procedureListItr = this.procedureRepository.findAll();
+            procedureListItr.forEach(procedure -> {
+                procedureList.add(procedure);
+            });
+        } catch (Exception ex) {
+            log.warn("Unable to find procedures");
+            if (log.isErrorEnabled()) {
+                log.error(ex);
+            }
+        }
         log.info(String.format("Total procedures fetched %d", procedureList.size()));
         log.info("END ProcedureService getAllProcedure");
         return procedureList;
@@ -120,7 +149,7 @@ public class ProcedureService implements IProcedureService<Procedure> {
         //check if doctor is valid
         if (procedureDto.getDoctorId() != null) {
             final Integer doctorId = procedureDto.getDoctorId();
-            final Optional<Doctor> doctorOptional = this.doctorService.getDoctorById(doctorId);
+            final Optional<Doctor> doctorOptional = this.doctorService.findDoctorById(doctorId);
 
             //check if doctor is in system
             if (doctorOptional.isPresent()) {
