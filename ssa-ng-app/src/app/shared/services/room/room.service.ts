@@ -7,11 +7,14 @@ import { UtilService } from '../util/util.service';
 })
 export class RoomService {
 
+  endpoint: string = UtilService.getServerUrl().concat('room');
   constructor(private httpCliet: HttpClient) { }
 
   public getAllRooms() {
-    const serverUrl = UtilService.getServerUrl();
-    const getRoomsEndpoint = serverUrl.concat('rm');
-    return this.httpCliet.get(getRoomsEndpoint);
+    try {
+      return this.httpCliet.get(this.endpoint);
+    } catch (e) {
+      return;
+    }
   }
 }
