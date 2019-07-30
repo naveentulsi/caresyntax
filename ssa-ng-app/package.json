@@ -2,6 +2,7 @@
   "name": "ssa-ng-app",
   "version": "0.0.0",
   "scripts": {
+    "build:aot": "ng build --aot --prod",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
@@ -20,7 +21,7 @@
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
     "@types/jquery": "^3.3.30",
-    "bootstrap": "^4.3.1",
+    "bootstrap": "^4.3.0",
     "core-js": "^2.5.4",
     "jquery": "^3.4.1",
     "ng-pick-datetime": "^5.2.6",
