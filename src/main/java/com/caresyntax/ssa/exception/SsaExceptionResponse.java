@@ -9,4 +9,5 @@ public class SsaExceptionResponse {
 
     private String reason;
     private String message;
+    private Boolean error = true;
 }
