@@ -35,7 +35,7 @@ public class PatientRestController {
 
         Optional optionalPatientList;
         SsaSimpleResponse patientListSimpleResponse = new SsaSimpleResponse();
-        patientListSimpleResponse.setMessage(IConstants.NO_PATIENT_FETCHED);
+        patientListSimpleResponse.setMessage(IConstants.PATIENT_NOT_FETCHED);
         patientListSimpleResponse.setData(Collections.EMPTY_LIST);
 
         try {
@@ -54,7 +54,7 @@ public class PatientRestController {
         return ResponseEntity.ok(patientListSimpleResponse);
     }
 
-    @PostMapping
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addPatient(@RequestBody PatientDto patientData) throws SsaInvalidDataException {
         log.info("START PatientRestController addPatient");
         SsaSimpleResponse addPatientResponse = new SsaSimpleResponse();
@@ -66,6 +66,7 @@ public class PatientRestController {
         if (sPatient.getId() != null) {
             log.info("Patient saved successfully");
             addPatientResponse.setMessage(IConstants.PATIENT_ADDED);
+            addPatientResponse.setData(sPatient);
         }
         log.info("END PatientRestController addPatient");
         return ResponseEntity.ok(addPatientResponse);
