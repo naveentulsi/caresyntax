@@ -13,7 +13,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ssa-ng-app",
+            "baseHref": "/ssa/",
+            "outputPath": "../src/main/resources/static",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,11 +25,12 @@
             ],
             "styles": [
               "src/styles.css",
-              "../ssa-ng-app/node_modules/bootstrap/dist/css/bootstrap.css",
+              "../ssa-ng-app/node_modules/bootstrap/dist/css/bootstrap.min.css",
               "../ssa-ng-app/node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
-              "../ssa-ng-app/node_modules/bootstrap/dist/js/bootstrap.js"
+              "../ssa-ng-app/node_modules/jquery/dist/jquery.min.js",
+              "../ssa-ng-app/node_modules/bootstrap/dist/js/bootstrap.js"              
             ]
           },
           "configurations": {
