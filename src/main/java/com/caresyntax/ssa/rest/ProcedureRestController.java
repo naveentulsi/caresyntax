@@ -36,11 +36,11 @@ public class ProcedureRestController {
         log.info("START ProcedureRestController getAllProcedure");
         final List<Procedure> allProcedure = this.procedureService.getAllProcedure();
         SsaSimpleResponse ssaSimpleResponse = new SsaSimpleResponse();
-        ssaSimpleResponse.setMessage("Unable to fetch procedures");
+        ssaSimpleResponse.setMessage(IConstants.PROCEDURE_FETCH_FAILED);
 
         if (allProcedure != null && allProcedure.size() > 0) {
             log.info("Adding procedures to response entity");
-            ssaSimpleResponse.setMessage("Successfully fetched procedures");
+            ssaSimpleResponse.setMessage(IConstants.PROCEDURE_FETCH_SUCCESS);
             ssaSimpleResponse.setData(allProcedure);
         }
 
@@ -52,24 +52,34 @@ public class ProcedureRestController {
     public ResponseEntity<SsaSimpleResponse> storeProcedure(@RequestBody ProcedureDto procedureDto) {
         log.info("START ProcedureRestController getAllProcedure");
         SsaSimpleResponse ssaSimpleResponse = new SsaSimpleResponse();
-        ssaSimpleResponse.setMessage("Server unable to store procedures");
+        ssaSimpleResponse.setMessage(IConstants.PROCEDURE_NOT_SAVE);
 
         final Procedure procedure = this.procedureService.validateAndSetProcedureData(procedureDto);
         final Procedure sProcedure = this.procedureService.saveProcedure(procedure);
 
-        if (sProcedure.getId() != null) {
-            ssaSimpleResponse.setMessage("Procedure has been saved successfully");
+        if (sProcedure != null && sProcedure.getId() != null) {
+            ssaSimpleResponse.setMessage(IConstants.PROCEDURE_SAVED);
+            ssaSimpleResponse.setData(sProcedure);
+            return new ResponseEntity<>(ssaSimpleResponse, HttpStatus.CREATED);
         }
 
         log.info("END ProcedureRestController getAllProcedure");
-        return new ResponseEntity<>(ssaSimpleResponse, HttpStatus.CREATED);
+        return ResponseEntity.ok(ssaSimpleResponse);
+
     }
 
+    /**
+     * Method updates procedure if the provided procedure data is valid, otherwise responds with a message containing
+     * the reason of for the put operation.
+     *
+     * @param procedure procedure entity to be updated
+     * @return
+     */
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE, name = "Update procedure status")
     public ResponseEntity<SsaSimpleResponse> updateProcedure(@RequestBody Procedure procedure) {
         log.info("START ProcedureRestController updateProcedure");
         SsaSimpleResponse ssaSimpleResponse = new SsaSimpleResponse();
-        ssaSimpleResponse.setMessage("Server unable to update procedures");
+        ssaSimpleResponse.setMessage(IConstants.PROCEDURE_NOT_UPDATED);
 
         if (procedure.getId() != null) {
             final Optional<Procedure> procedureOptional = this.procedureService.findById(procedure.getId());
@@ -82,6 +92,7 @@ public class ProcedureRestController {
                     sProcedure.setStatus(procedure.getStatus());
                     this.procedureService.saveProcedure(sProcedure);
                     ssaSimpleResponse.setMessage(IConstants.PROCEDURE_UPDATED);
+
                 } else {
                     log.info("No status field");
                     ssaSimpleResponse.setMessage(IConstants.PROCEDURE_EMPTY_STATUS);
