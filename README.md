@@ -24,7 +24,7 @@ Testing
   - Spring MockMvc
 
 ### Angular documentation
-Documentation to install and run Angular app is located at [a link](https://github.com/naveentulsi/caresyntax/blob/master/ssa-ng-app/README.md)
+Documentation to install and run Angular app is located at [ReadMe](https://github.com/naveentulsi/caresyntax/blob/master/ssa-ng-app/README.md)
 as a module in parent spring boot project
     
 
@@ -46,13 +46,13 @@ Step 3: Build project using npm <br/>
 Step 4: Go back to project root dir 'project-dir' <br/>
 
 ### Spring boot
-To build angular and spring boot togther, we are using org.codehaus.mojo plugin. Please make sure you have all done the previous step. Otherwise next step would fail. <br/>
+To build angular and spring boot togther, we are using org.codehaus.mojo plugin. Please make sure you have done the previous step. Otherwise next step would fail. <br/>
 Build, test and package.<br/>
 
   ```
   mvn clean install
   ```
-For test and test coverage, <br/>
+For integration testing H2 is being used, it is configured in test/respurces/applicaion.yml. To start test <br/>
 
   ```
   mvn test
@@ -62,7 +62,6 @@ Coverage report,<br/>
   ```
   mvn jacoco:report
   ```
-
 ## Database configuration 
 Create a Postgres database and add the credentials as env variables with below keys as in `/resources/application.yml`.  
 The default ones are :
@@ -85,7 +84,11 @@ run this command in the command line:
 mvn spring-boot:run
 ```
 I have not provided a data.sql script to inject data in database.
-But there is live demo I have hosted:
+But there is live demo with sample data hosted at:
+[psa-application](http://ec2-18-222-221-79.us-east-2.compute.amazonaws.com:8080/ssa)
+
+## Current Covearage report
+![alt text](https://caresyntax2.s3.us-east-2.amazonaws.com/jacococoverage.png)
 
 
 
