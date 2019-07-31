@@ -34,7 +34,8 @@ export const route: Route[] = [
     component: PatientListingComponent
   },
   {
-    path: '*',
-    component: StudySchedulerComponent
+    path: '',
+    pathMatch: 'full',
+    redirectTo: 'sc'
   }
 ];
