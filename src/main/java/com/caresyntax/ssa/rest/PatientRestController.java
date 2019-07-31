@@ -54,6 +54,13 @@ public class PatientRestController {
         return ResponseEntity.ok(patientListSimpleResponse);
     }
 
+    /**
+     * Add's patient in system, also validates patient data.
+     *
+     * @param patientData
+     * @return
+     * @throws SsaInvalidDataException
+     */
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity addPatient(@RequestBody PatientDto patientData) throws SsaInvalidDataException {
         log.info("START PatientRestController addPatient");

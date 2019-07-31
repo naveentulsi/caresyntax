@@ -27,6 +27,10 @@ public class PatientService implements IPatientService<Patient> {
         this.patientRepository = patientRepository;
     }
 
+    /**
+     *  Get All patients
+     * @return list of all patients in system
+     */
     @Override
     public Optional<List<Patient>> getAllPatients() {
         log.info("START PatientService getAllPatients");
@@ -42,6 +46,11 @@ public class PatientService implements IPatientService<Patient> {
         return patientList.size() > 0 ? Optional.of(patientList) : Optional.empty();
     }
 
+    /**
+     *  save a patient entity
+     * @param patient
+     * @return
+     */
     @Transactional
     @Override
     public Patient addPatient(Patient patient) {
@@ -49,6 +58,12 @@ public class PatientService implements IPatientService<Patient> {
         return this.patientRepository.save(patient);
     }
 
+    /**
+     * Method transforms Dto to db entity model and validates data.
+     * @param patientData
+     * @return
+     * @throws SsaInvalidDataException
+     */
     @Override
     public Patient createPatientModel(PatientDto patientData) throws SsaInvalidDataException {
         log.info("START PatientService createPatientModel");
