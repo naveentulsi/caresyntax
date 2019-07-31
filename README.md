@@ -46,7 +46,7 @@ Step 3: Build project using npm <br/>
 Step 4: Go back to project root dir 'project-dir' <br/>
 
 ### Spring boot
-To build angular and spring boot togther, we are using org.codehaus.mojo plugin. Please make sure you have all done the previous step. Otherwise next step would fail. <br/>
+To build angular and spring boot togther, we are using org.codehaus.mojo plugin. Please make sure you have done the previous step. Otherwise next step would fail. <br/>
 Build, test and package.<br/>
 
   ```
@@ -85,7 +85,7 @@ run this command in the command line:
 mvn spring-boot:run
 ```
 I have not provided a data.sql script to inject data in database.
-But there is live demo I have hosted a demo at:
+But there is live demo with sample data hosted at:
 [psa-application](http://ec2-18-222-221-79.us-east-2.compute.amazonaws.com:8080/ssa)
 
 
