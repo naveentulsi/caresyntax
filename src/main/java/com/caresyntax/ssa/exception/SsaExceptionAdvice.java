@@ -50,15 +50,17 @@ public class SsaExceptionAdvice {
      * @return
      */
     private ResponseEntity error(Exception ex, String message) {
-        String reason = ex.getClass().getName();
         logError(ex);
+
         if (ex instanceof SsaInvalidDataException) {
             SsaInvalidDataException ssaInvalidDataException = (SsaInvalidDataException) ex;
-            reason = ssaInvalidDataException.getReason();
+            String reason = ssaInvalidDataException.getReason();
             message = ssaInvalidDataException.getMessage();
-        }
+            return ResponseEntity.ok(new SsaExceptionResponse(reason, message, true));
 
-        return ResponseEntity.ok(new SsaExceptionResponse(reason, message, true));
+        } else {
+            return ResponseEntity.ok(new SsaExceptionResponse("Server Issue", "Server temporarily unable to serve the request.", true));
+        }
     }
 
     /**
@@ -67,7 +69,10 @@ public class SsaExceptionAdvice {
      * @param ex exception instance
      */
     private void logError(Exception ex) {
-        log.error(ex.getMessage(), ex);
+        log.warn(ex.getMessage());
+        if (log.isErrorEnabled()) {
+            log.error(ex.getMessage(), ex);
+        }
     }
 
 }
