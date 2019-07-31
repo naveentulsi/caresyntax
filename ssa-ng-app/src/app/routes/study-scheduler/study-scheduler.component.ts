@@ -38,8 +38,15 @@ export class StudySchedulerComponent implements OnInit {
     this.scheduleService.scheduleProcdure(procedure).subscribe(
       (res: any) => {
         try {
-          this.response = res.message;
-          this.toastService.showsSuccess(this.response);
+          // get response message
+          if ('message' in res) {
+            this.response = res.message;
+            if ('error' in res) {
+              this.toastService.showError(this.response);
+            } else {
+              this.toastService.showsSuccess(this.response);
+            }
+          }
           this.resetForm();
         } catch (err) {
           this.toastService.showError(this.ERROR_MESSAGE);
