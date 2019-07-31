@@ -31,6 +31,11 @@ public class ProcedureRestController {
         this.procedureService = procedureService;
     }
 
+    /**
+     * Method return all procedure in the system
+     *
+     * @return SsaSimpleResponse
+     */
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE, name = "Get all procedures.")
     public SsaSimpleResponse getAllProcedure() {
         log.info("START ProcedureRestController getAllProcedure");
@@ -48,6 +53,12 @@ public class ProcedureRestController {
         return ssaSimpleResponse;
     }
 
+    /**
+     * Method adds a procedure in to the system and validates the procedure data before persisting it.
+     *
+     * @param procedureDto
+     * @return SsaSimpleResponse - containing saved entity and a response message about operation
+     */
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE, name = "Save new procedure data")
     public ResponseEntity<SsaSimpleResponse> storeProcedure(@RequestBody ProcedureDto procedureDto) {
         log.info("START ProcedureRestController getAllProcedure");
