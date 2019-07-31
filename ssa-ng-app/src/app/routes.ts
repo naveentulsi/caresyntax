@@ -35,6 +35,6 @@ export const route: Route[] = [
   },
   {
     path: '*',
-    component: AppComponent
+    component: StudySchedulerComponent
   }
 ];
