@@ -26,6 +26,11 @@ public class DoctorRestController {
         this.doctorService = doctorService;
     }
 
+    /**
+     * Rest endpoint to fetch all doctors in system
+     *
+     * @return SsasimpleResponse object containing list of doctor and a response message.
+     */
     @GetMapping(name = "Get all doctors", produces = MediaType.APPLICATION_JSON_VALUE)
     public SsaSimpleResponse getAllDoctor() {
         log.info("START DoctorRestController getAllDoctor");
@@ -43,6 +48,12 @@ public class DoctorRestController {
         return ssaSimpleResponse;
     }
 
+    /**
+     * Rest endpoint to add doctors into system
+     *
+     * @param doctor
+     * @return SsaSimpleResponse object having status of operation.
+     */
     @PostMapping(name = "Store doctor data to system", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<SsaSimpleResponse> addDoctor(@RequestBody Doctor doctor) {
         log.info("START DoctorRestController addDoctor");
