@@ -62,7 +62,6 @@ Coverage report,<br/>
   ```
   mvn jacoco:report
   ```
-
 ## Database configuration 
 Create a Postgres database and add the credentials as env variables with below keys as in `/resources/application.yml`.  
 The default ones are :
@@ -87,6 +86,9 @@ mvn spring-boot:run
 I have not provided a data.sql script to inject data in database.
 But there is live demo with sample data hosted at:
 [psa-application](http://ec2-18-222-221-79.us-east-2.compute.amazonaws.com:8080/ssa)
+
+## Current Covearage report
+![alt text](https://caresyntax2.s3.us-east-2.amazonaws.com/jacococoverage.png)
 
 
 
