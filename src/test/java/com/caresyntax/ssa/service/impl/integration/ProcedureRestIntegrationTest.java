@@ -46,7 +46,8 @@ public class ProcedureRestIntegrationTest {
     ObjectMapper objectMapper = new ObjectMapper();
 
     @Test
-    public void testStoreProcedure() {
+    public void procedure_rest_integration_full_cycle() {
+        log.info("START ProcedureRestIntegrationTest ProcedureRestIntegrationTest");
 
         try {
 
@@ -83,6 +84,12 @@ public class ProcedureRestIntegrationTest {
             final String procedureUpdateResponseMessage = procedureUpdateMessageList.get(0);
 
             Assert.assertEquals(IConstants.PROCEDURE_UPDATED, procedureUpdateResponseMessage);
+
+            final List<String> findProcedureMessageList = getOperation("/api/v1/proc");
+            final String findProcedureResponseMessage = findProcedureMessageList.get(0);
+
+            Assert.assertNotNull(findProcedureResponseMessage);
+            Assert.assertEquals(IConstants.PROCEDURE_FETCH_SUCCESS, findProcedureResponseMessage);
 
 
         } catch (JsonProcessingException jsEx) {
@@ -149,6 +156,28 @@ public class ProcedureRestIntegrationTest {
         final MockHttpServletResponse putResponse = putRequest.getResponse();
         final int statusCode = putResponse.getStatus();
         final String apiResponseAsString = putResponse.getContentAsString();
+
+        final SsaSimpleResponse ssaSimpleResponse = readAndTransformResponse(apiResponseAsString);
+        final String responseMessage = ssaSimpleResponse.getMessage();
+
+        Assert.assertNotNull(statusCode);
+        responseValueList.add(responseMessage);
+
+        log.info(uri + " API Response..");
+        log.info(responseMessage);
+
+        return responseValueList;
+    }
+
+    private List<String> getOperation(String uri) throws Exception {
+        ArrayList<String> responseValueList = new ArrayList<>();
+
+        final MvcResult getRequest = mockMvc.perform(MockMvcRequestBuilders.get(uri)
+                .contentType(MediaType.APPLICATION_JSON)).andReturn();
+
+        final MockHttpServletResponse getResponse = getRequest.getResponse();
+        final int statusCode = getResponse.getStatus();
+        final String apiResponseAsString = getResponse.getContentAsString();
 
         final SsaSimpleResponse ssaSimpleResponse = readAndTransformResponse(apiResponseAsString);
         final String responseMessage = ssaSimpleResponse.getMessage();
