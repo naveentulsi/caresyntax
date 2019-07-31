@@ -52,7 +52,7 @@ Build, test and package.<br/>
   ```
   mvn clean install
   ```
-For test and test coverage, <br/>
+For integration testing H2 is being used, it is configured in test/respurces/applicaion.yml. To start test <br/>
 
   ```
   mvn test
