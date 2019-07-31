@@ -24,7 +24,7 @@ Testing
   - Spring MockMvc
 
 ### Angular documentation
-Documentation to install and run Angular app is located at [a link](https://github.com/naveentulsi/caresyntax/blob/master/ssa-ng-app/README.md)
+Documentation to install and run Angular app is located at [ReadMe](https://github.com/naveentulsi/caresyntax/blob/master/ssa-ng-app/README.md)
 as a module in parent spring boot project
     
 
@@ -85,7 +85,8 @@ run this command in the command line:
 mvn spring-boot:run
 ```
 I have not provided a data.sql script to inject data in database.
-But there is live demo I have hosted:
+But there is live demo I have hosted a demo at:
+[psa-application](http://ec2-18-222-221-79.us-east-2.compute.amazonaws.com:8080/ssa)
 
 
 
