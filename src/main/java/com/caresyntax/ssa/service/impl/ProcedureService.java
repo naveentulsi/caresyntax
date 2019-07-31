@@ -142,7 +142,7 @@ public class ProcedureService implements IProcedureService<Procedure> {
                 final Patient patient = patientOptional.get();
                 procedure.setPatient(patient);
             } else
-                throw new SsaInvalidDataException("Patient is required field", "No Patient");
+                throw new SsaInvalidDataException("Unable to find patient in system", "No Patient");
         } else
             throw new SsaInvalidDataException("Patient is required field", "No Patient");
 
@@ -155,7 +155,7 @@ public class ProcedureService implements IProcedureService<Procedure> {
             if (doctorOptional.isPresent()) {
                 procedure.setDoctor(doctorOptional.get());
             } else
-                throw new SsaInvalidDataException("Doctor is required field", "No Doctor");
+                throw new SsaInvalidDataException("Unable to find doctor in system", "No Doctor");
         } else
             throw new SsaInvalidDataException("Doctor is required field", "No Doctor");
 
