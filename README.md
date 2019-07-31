@@ -1,6 +1,6 @@
 # caresyntax - Study Scheduling Application
 
-caresyntax ssa is procedure scheduling application.
+An application to schedule procedures.
 
 ## Installation
 
@@ -32,7 +32,7 @@ as a module in parent spring boot project
 
 ### Angular 
 To build angular app <br/>
-Step 1: change dir to '<project-dir>'/ssa-ng-app <br/>
+Step 1: change dir to 'project-dir'/ssa-ng-app <br/>
 Step 2: Dependency installation.<br/>
 
   ```
@@ -41,13 +41,13 @@ Step 2: Dependency installation.<br/>
 Step 3: Build project using npm <br/>
 
   ```
-  npm run buold:aot
+  npm run build:aot
   ```
-Step 4: Got back the project root dir '<project-dir>' <br/>
+Step 4: Go back to project root dir 'project-dir' <br/>
 
-### Maven
-To build angular and spring boot togther, we using org.codehaus.mojo plugin. <br/>
-Step: Build, test and package.<br/>
+### Spring boot
+To build angular and spring boot togther, we are using org.codehaus.mojo plugin. Please make sure you have all done the previous step. Otherwise next step would fail. <br/>
+Build, test and package.<br/>
 
   ```
   mvn clean install
