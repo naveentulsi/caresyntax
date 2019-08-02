@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 import java.util.Optional;
 
@@ -184,6 +185,7 @@ public class ProcedureService implements IProcedureService<Procedure> {
             procedure.setPlannedEndTime(convertStringToDate(procedureDto.getPlannedEndDate()));
         }
 
+        procedure.setCreatedDate(new Date());
         log.info("END ProcedureService setProcedureData");
         return procedure;
     }
