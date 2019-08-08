@@ -1,4 +1,4 @@
-# caresyntax - Study Scheduling Application
+# pse - Study Scheduling Application
 
 An application to schedule procedures.
 
